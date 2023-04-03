@@ -4,8 +4,8 @@ import React from 'react';
 const SideBar = () => {
 	const {tasks, updateTask, setSelectedTask} = useTaskContext();
 
-	const handleTaskClick = (id: number, checked: boolean) => {
-		setSelectedTask(id, checked);
+	const handleTaskClick = (id: number) => {
+		setSelectedTask(id);
 	};
 	return (
 		<div className="dark:text-white text-black">
@@ -16,10 +16,10 @@ const SideBar = () => {
 							<li key={task.id}>
 								<div
 									className="flex items-center bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
-									onClick={(e) => handleTaskClick(task.id, false)}
+									onClick={(e) => handleTaskClick(task.id)}
 								>
 									<span className="flex-1">{task.name}</span>
-									<div className={`w-5 h-5 rounded-full ${task.completed ? 'bg-green-600' : 'bg-red-600'}`}></div>
+									<div className={`w-5 h-5 rounded-full ${task.status ? 'bg-green-600' : 'bg-red-600'}`}></div>
 								</div>
 							</li>
 						))}

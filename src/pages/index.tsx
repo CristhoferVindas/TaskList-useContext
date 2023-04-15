@@ -16,12 +16,12 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main className={styles.main}>
-				<div className="bg-gray-100">
-					<div>
-						<SideBar />
-					</div>
+				<div>
 					<div>
 						<Form />
+					</div>
+					<div>
+						<SideBar />
 					</div>
 				</div>
 			</main>

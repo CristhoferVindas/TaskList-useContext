@@ -19,24 +19,40 @@ const Form: React.FC = () => {
 	};
 
 	return (
-		<div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex justify-between items-center">
+		<div className="max-w-sm p-6 rounded-lg shadow dark:bg-zinc-900 bg-gray-500 flex items-center">
 			{selectedTask.id == 0 ? (
 				<div>
-					<p>Seleccione la tarea que quiere modificar</p>
+					<p className="dark:text-white text-black font-bold">Seleccione la tarea que quiere modificar</p>
 				</div>
 			) : (
-				<div className="grid grid-rows-4 grid-flow-col gap-4">
-					<p className="text-gray-800 dark:text-gray-200 p-2">Tarea: {selectedTask.name}</p>
-					<label className="relative inline-flex items-center cursor-pointer">
-						<input
-							type="checkbox"
-							className="sr-only peer p-2"
-							checked={selectedTask.status}
-							onChange={(e) => handleTaskClick(e, selectedTask.id, e.target.checked)}
-						/>
-						<div className="w-11 h-6 bg-red-700 rounded-full peer dark:bg-red-700 peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-2.5 after:left-[2px] after:bg-white after:border-re after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
-					</label>
-					<button onClick={(e) => setSelectedTask(0)}>Limpiar Pantalla</button>
+				<div className=" grid grid-rows-3 grid-flow-col dark:bg-zinc-400 bg-gray-100  content-center rounded-lg ">
+					<p className=" font-bold rounded-lg text-center text-gray-950 dark:text-gray-800 p-2 m-2">
+						Tarea: {selectedTask.name}
+					</p>
+					<div className=" flex items-center justify-center  m-2 rounded-lg columns-2">
+						<label className="flex items-center cursor-pointer">
+							<div className="relative ">
+								<input
+									type="checkbox"
+									value=""
+									className="sr-only peer"
+									checked={selectedTask.status}
+									onChange={(e) => handleTaskClick(e, selectedTask.id, e.target.checked)}
+								/>
+								<div className="w-11 h-6 bg-red-600 rounded-full peer-checked:after:translate-x-full  after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+							</div>
+							<span className="ml-3 text-sm text-gray-900 font-bold">
+								{selectedTask.status ? 'Activa' : 'Inactiva'}
+							</span>
+						</label>
+					</div>
+
+					<button
+						className="text-white p-2 m-2 bg-gradient-to-r bg-blue-700 font-medium rounded-lg text-sm text-center hover:bg-blue-600"
+						onClick={(e) => setSelectedTask(0)}
+					>
+						Limpiar pantalla
+					</button>
 				</div>
 			)}
 		</div>
